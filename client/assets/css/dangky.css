@@ -1,59 +1,145 @@
+/* ================================
+   FONT & BODY
+================================ */
+body {
+    font-family: "Poppins", sans-serif;
+    background: #fff;
+    margin: 0;
+    padding: 0;
+}
+
+/* ================================
+   CONTAINER
+================================ */
 .auth-container {
     max-width: 500px;
-    margin: 40px auto;
+    margin: 80px auto;
     padding: 20px;
     text-align: center;
-    font-family: Poppins, sans-serif;
 }
 
+/* ================================
+   TITLE
+================================ */
 .auth-title {
-    font-size: 22px;
+    font-size: 24px;
     font-weight: 600;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
+    color: #333;
 }
 
+/* ================================
+   FORM
+================================ */
 .auth-form {
     background: #fff;
-    padding: 25px;
+    padding: 30px;
     border-radius: 8px;
     box-shadow: 0 2px 8px rgb(0 0 0 / 10%);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
     text-align: left;
 }
 
+/* LABEL */
 .auth-form label {
     font-size: 14px;
     font-weight: 600;
+    color: #333;
 }
 
+/* INPUT */
 .auth-form input {
     width: 100%;
-    padding: 10px;
-    margin: 6px 0 15px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
+    padding: 12px;
+    border: 1px solid #dcdcdc;
+    border-radius: 6px;
+    font-size: 14px;
+    outline: none;
+    transition: 0.2s;
+    background: #f7f7f7;
 }
 
+.auth-form input:focus {
+    border-color: #333;
+    background: #fff;
+}
+
+/* ================================
+   BUTTON
+================================ */
 .btn-auth {
     width: 100%;
-    padding: 10px;
-    background: black;
+    margin-top: 10px;
+    padding: 12px;
+    background: #000;
     color: #fff;
     border: none;
     border-radius: 5px;
-    margin-top: 5px;
+    font-size: 14px;
     cursor: pointer;
+    transition: 0.2s;
 }
 
 .btn-auth:hover {
-    background: #333;
+    opacity: 0.85;
 }
 
+/* ================================
+   ALERT
+================================ */
+.alert {
+    padding: 12px;
+    border-radius: 6px;
+    margin-bottom: 15px;
+    font-size: 14px;
+    text-align: center;
+}
+
+/* lỗi */
+.alert-error {
+    background: #ffe1e1;
+    color: #c20000;
+}
+
+/* thành công */
+.alert-success {
+    background: #d4edda;
+    color: #155724;
+}
+
+/* ================================
+   LINKS
+================================ */
 .auth-links {
     margin-top: 15px;
-    text-align: center;
     font-size: 14px;
+    text-align: center;
 }
 
 .auth-links a {
-    color: #0066cc;
+    color: #1a73e8;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.auth-links a:hover {
+    text-decoration: underline;
+}
+
+/* ================================
+   SUB LINK (quên mật khẩu)
+================================ */
+.sub-link {
+    font-size: 13px;
+}
+
+.sub-link a {
+    color: #1a73e8;
+    text-decoration: none;
+}
+
+.sub-link a:hover {
+    text-decoration: underline;
 }

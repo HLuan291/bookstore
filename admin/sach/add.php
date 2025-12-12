@@ -72,7 +72,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 ?>
 
-<link rel="stylesheet" href="assets/css/sach.css">
+<link rel="stylesheet" href="../assets/css/sach.css">
 
 <div class="form-wrapper">
 
@@ -96,7 +96,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             <label class="upload-btn">
                 <input type="file" name="hinh_anh" accept="image/*" onchange="loadImage(event)">
-                ⬆ Tải ảnh lên
+                Tải ảnh lên
             </label>
         </div>
 

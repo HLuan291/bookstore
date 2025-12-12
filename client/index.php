@@ -2,14 +2,12 @@
 session_start();
 require_once __DIR__ . '/includes/functions.php';
 
+// Lấy tham số 'page' từ URL, mặc định là 'home'
 $page = $_GET['page'] ?? 'home';
 
-// --- Các trang KHÔNG dùng header/footer ---
-$noHeaderPages = ['dangnhap', 'dangky'];
-
-if (!in_array($page, $noHeaderPages)) {
-    include __DIR__ . '/includes/header.php';
-}
+// --- LUÔN TẢI HEADER ---
+// Bỏ qua điều kiện kiểm tra $noHeaderPages
+include __DIR__ . '/includes/header.php';
 
 // ---------------- ROUTER ----------------
 switch ($page) {
@@ -56,7 +54,6 @@ switch ($page) {
         break;
 }
 
-// --- Footer chỉ load khi không phải login/register ---
-if (!in_array($page, $noHeaderPages)) {
-    include __DIR__ . '/includes/footer.php';
-}
+// --- LUÔN TẢI FOOTER ---
+// Bỏ qua điều kiện kiểm tra $noHeaderPages
+include __DIR__ . '/includes/footer.php';

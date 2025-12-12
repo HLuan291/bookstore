@@ -77,8 +77,9 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
 }
 ?>
 <link rel="stylesheet" href="../assets/css/sach.css">
-<div class="form-page">
-    <h1>Sửa Sách</h1>
+<div class="form-wrapper"> 
+    
+    <h1 class="form-title">Sửa Sách</h1>
 
     <?php if ($success): ?>
         <div class="alert success"><?= $success ?></div>
@@ -88,62 +89,103 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
         <div class="alert error"><?= $error ?></div>
     <?php endif; ?>
 
-<form method="post" enctype="multipart/form-data" class="form-admin">
+    <form method="post" enctype="multipart/form-data" class="main-form-layout">
 
-    <label>Mã sách:</label>
-    <input name="id_sach" value="<?= $book['id_sach'] ?>">
+        <div class="col-left">
+            
+            <div class="form-group">
+                <label>Ảnh hiện tại:</label>
+                <img class="preview-img-edit" src="../uploads/<?= $book['hinh_anh'] ?>" alt="Ảnh sách">
+            </div>
 
-    <label>Tên sách:</label>
-    <input name="ten_sach" value="<?= $book['ten_sach'] ?>">
+            <label style="margin-top: 10px;">Đổi ảnh mới:</label>
+            <div class="file-upload-wrapper">
+                <input type="file" name="hinh_anh" id="newImage">
+                <span class="file-upload-label">Chọn tệp</span>
+                <span id="fileNameDisplay" style="margin-left: 10px; font-size: 14px; color: #555;">Chưa có tệp</span>
+            </div>
+            
+            <div class="form-group" style="margin-top: 20px;">
+                <label>Trạng thái:</label>
+                <select name="trang_thai">
+                    <option value="1" <?= $book['trang_thai']==1?'selected':'' ?>>Hoạt động</option>
+                    <option value="0" <?= $book['trang_thai']==0?'selected':'' ?>>Ngừng</option>
+                </select>
+            </div>
+        </div>
 
-    <label>Danh mục:</label>
-    <select name="id_danhmuc">
-        <?php foreach ($danhmucs as $d): ?>
-            <option value="<?= $d['id_danhmuc'] ?>" 
-                <?= $book['id_danhmuc'] == $d['id_danhmuc'] ? 'selected' : '' ?>>
-                <?= $d['ten_danh_muc'] ?>
-            </option>
-        <?php endforeach; ?>
-    </select>
+        <div class="col-right">
 
-    <label>Bộ sách (Tùy chọn):</label>
-    <select name="id_bosach">
-        <option value="">-- Không thuộc bộ sách --</option>
-        <?php foreach ($bosachs as $b): ?>
-            <option value="<?= $b['id_bosach'] ?>"
-                <?= ($book['id_bosach'] ?? '') == $b['id_bosach'] ? 'selected' : '' ?>>
-                <?= $b['ten_bo_sach'] ?>
-            </option>
-        <?php endforeach; ?>
-    </select>
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Mã sách:</label>
+                    <input name="id_sach" value="<?= $book['id_sach'] ?>">
+                </div>
+                <div class="form-group">
+                    <label>Tên sách:</label>
+                    <input name="ten_sach" value="<?= $book['ten_sach'] ?>">
+                </div>
+            </div>
 
-    <label>Tác giả:</label>
-    <input name="tac_gia" value="<?= $book['tac_gia'] ?>">
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Danh mục:</label>
+                    <select name="id_danhmuc">
+                        <?php foreach ($danhmucs as $d): ?>
+                            <option value="<?= $d['id_danhmuc'] ?>" 
+                                <?= $book['id_danhmuc'] == $d['id_danhmuc'] ? 'selected' : '' ?>>
+                                <?= $d['ten_danh_muc'] ?>
+                            </option>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Bộ sách (Tùy chọn):</label>
+                    <select name="id_bosach">
+                        <option value="">-- Không thuộc bộ sách --</option>
+                        <?php foreach ($bosachs as $b): ?>
+                            <option value="<?= $b['id_bosach'] ?>"
+                                <?= ($book['id_bosach'] ?? '') == $b['id_bosach'] ? 'selected' : '' ?>>
+                                <?= $b['ten_bo_sach'] ?>
+                            </option>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
+            </div>
 
-    <label>Giá:</label>
-    <input type="number" name="gia" value="<?= $book['gia'] ?>">
+            <div class="form-group">
+                <label>Tác giả:</label>
+                <input name="tac_gia" value="<?= $book['tac_gia'] ?>">
+            </div>
 
-    <label>Tồn kho:</label>
-    <input type="number" name="ton_kho" value="<?= $book['ton_kho'] ?>">
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Giá:</label>
+                    <input type="number" name="gia" value="<?= $book['gia'] ?>">
+                </div>
+                <div class="form-group">
+                    <label>Tồn kho:</label>
+                    <input type="number" name="ton_kho" value="<?= $book['ton_kho'] ?>">
+                </div>
+            </div>
 
-    <label>Mô tả:</label>
-    <textarea name="mo_ta"><?= $book['mo_ta'] ?></textarea>
+            <div class="form-group">
+                <label>Mô tả:</label>
+                <textarea name="mo_ta"><?= $book['mo_ta'] ?></textarea>
+            </div>
 
-    <label>Ảnh hiện tại:</label><br>
-    <img src="../uploads/<?= $book['hinh_anh'] ?>" width="150" style="border-radius:6px;margin-bottom:8px">
-
-    <label>Đổi ảnh mới:</label>
-    <input type="file" name="hinh_anh">
-
-    <label>Trạng thái:</label>
-    <select name="trang_thai">
-        <option value="1" <?= $book['trang_thai']==1?'selected':'' ?>>Hoạt động</option>
-        <option value="0" <?= $book['trang_thai']==0?'selected':'' ?>>Ngừng</option>
-    </select>
-
-    <button class="btn-save">Lưu thay đổi</button>
-
-</form>
+            <div class="form-actions">
+                <button class="btn-save" type="submit">Lưu</button>
+                <a href="list.php" class="btn-cancel">Hủy</a>
+            </div>
+            </div>
+        </div>
+    </form>
 </div>
-
+<script>
+    document.getElementById('newImage').addEventListener('change', function(e) {
+        var fileName = e.target.files[0] ? e.target.files[0].name : 'Chưa có tệp';
+        document.getElementById('fileNameDisplay').textContent = fileName;
+    });
+</script>
 <?php include __DIR__ . '/../includes/footer.php'; ?>
