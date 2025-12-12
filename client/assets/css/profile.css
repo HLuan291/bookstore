@@ -1,71 +1,138 @@
+/* ======= Container chính ======= */
 .profile-container {
     max-width: 900px;
-    margin: 40px auto;
-    padding: 20px;
+    margin: 50px auto;
+    padding: 30px;
     font-family: "Poppins", sans-serif;
+    background: #f9f9f9;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
 }
 
+/* ======= Tiêu đề ======= */
 .profile-title {
-    font-size: 22px;
-    font-weight: 600;
-    margin-bottom: 15px;
+    font-size: 26px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: #333;
+    text-align: center;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 10px;
 }
 
+/* ======= Thông tin cá nhân ======= */
 .profile-info {
-    background: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgb(0 0 0 / 10%);
-    margin-bottom: 30px;
+    background: #ffffff;
+    padding: 25px 30px;
+    border-radius: 12px;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.06);
+    margin-bottom: 40px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.profile-info:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
 }
 
 .profile-info p {
-    margin: 8px 0;
-    font-size: 15px;
+    margin: 12px 0;
+    font-size: 16px;
+    color: #555;
+    line-height: 1.6;
 }
 
+/* ======= Nút chỉnh sửa ======= */
 .btn-edit {
     display: inline-block;
-    margin-top: 10px;
-    padding: 8px 16px;
-    background: #007bff;
-    color: white;
-    border-radius: 5px;
+    margin-top: 15px;
+    padding: 10px 22px;
+    background: linear-gradient(135deg, #6c63ff, #007bff);
+    color: #fff;
+    border-radius: 8px;
     text-decoration: none;
+    font-weight: 500;
+    transition: background 0.3s, transform 0.2s;
 }
 
 .btn-edit:hover {
-    background: #0056b3;
+    background: linear-gradient(135deg, #5a52d4, #0056b3);
+    transform: translateY(-2px);
 }
 
+/* ======= Bảng đơn hàng ======= */
 .order-table {
     width: 100%;
-    border-collapse: collapse;
+    border-collapse: separate;
+    border-spacing: 0;
     background: #fff;
-    border-radius: 8px;
+    border-radius: 12px;
     overflow: hidden;
-    box-shadow: 0 2px 8px rgb(0 0 0 / 10%);
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.06);
 }
 
 .order-table th,
 .order-table td {
-    padding: 12px;
-    border-bottom: 1px solid #eee;
+    padding: 15px;
     text-align: center;
+    font-size: 15px;
+    color: #444;
 }
 
 .order-table th {
     background: #f5f5f5;
     font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
+.order-table tr:nth-child(even) td {
+    background: #f9f9f9;
+}
+
+.order-table tr:hover td {
+    background: #e9f2ff;
+    transition: background 0.3s;
+}
+
+/* ======= Trạng thái đơn hàng ======= */
 .status {
-    padding: 5px 12px;
-    border-radius: 4px;
+    padding: 6px 16px;
+    border-radius: 20px;
     font-size: 13px;
+    font-weight: 500;
+    display: inline-block;
+    min-width: 90px;
 }
 
-.status.choxacnhan { background: #ffcc00; color: #000; }
-.status.danggiaohang { background: #007bff; color: #fff; }
-.status.hoanthanh { background: #28a745; color: #fff; }
+.status.choxacnhan { background: #ffc107; color: #212529; }
+.status.danggiaohang { background: #0d6efd; color: #fff; }
+.status.hoanthanh { background: #198754; color: #fff; }
 .status.dahuy { background: #dc3545; color: #fff; }
+
+/* ======= Responsive cho màn hình nhỏ ======= */
+@media (max-width: 768px) {
+    .profile-container {
+        padding: 20px;
+        margin: 20px;
+    }
+
+    .profile-title {
+        font-size: 22px;
+    }
+
+    .profile-info p {
+        font-size: 15px;
+    }
+
+    .btn-edit {
+        padding: 8px 18px;
+        font-size: 14px;
+    }
+
+    .order-table th,
+    .order-table td {
+        padding: 10px;
+        font-size: 14px;
+    }
+}

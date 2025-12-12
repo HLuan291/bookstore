@@ -1,3 +1,4 @@
+
 /* ---------------- HERO BANNER ---------------- */
 .hero-banner {
     width: 100%;
@@ -45,99 +46,143 @@
     background: #004a9e;
 }
 
-/* ---------------- SECTION HEADER ---------------- */
+
+/* ---------------- SECTION HEADER - CẢI TIẾN ---------------- */
 .home-section {
-    padding: 10px 0 40px;
+    padding: 20px 0 40px; /* Tăng khoảng cách */
 }
 
 .section-header {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 18px;
-    padding: 0 10px;
+    align-items: center;
+    margin-bottom: 25px; /* Tăng khoảng cách dưới */
+    /* Bỏ padding 0 10px nếu đã có container bao ngoài */
+    /* padding: 0 0; */ 
+    border-left: 5px solid #ff5722; /* Thêm đường kẻ nổi bật */
+    padding-left: 10px;
 }
 
 .section-header h2 {
-    font-size: 22px;
+    font-size: 26px; /* Tăng kích thước */
     font-weight: 700;
+    color: #1a1a1a;
 }
 
 .view-all {
-    font-size: 14px;
-    color: #0066cc;
+    font-size: 15px;
+    color: #2563eb; /* Sử dụng màu xanh chủ đạo của header */
     text-decoration: none;
+    font-weight: 500;
+    padding: 4px 10px;
+    border: 1px solid transparent;
+    border-radius: 6px;
+    transition: 0.2s;
 }
 
-/* ---------------- BOOK SLIDER ---------------- */
+.view-all:hover {
+    color: #004d99;
+    background: #eef2ff; /* Background nhẹ khi hover */
+    border-color: #c7d2fe;
+}
+
+/* ---------------- BOOK SLIDER (GIỮ NGUYÊN) ---------------- */
 .book-slider {
     display: flex;
-    gap: 20px;
+    gap: 24px; /* Tăng khoảng cách giữa các sách */
     overflow-x: auto;
-    padding-bottom: 10px;
+    padding-bottom: 15px;
     scroll-behavior: smooth;
+    /* Padding hai bên nếu cần, nhưng thường dùng margin của container */
+    /* padding: 0 10px 15px; */ 
 }
 
 .book-slider::-webkit-scrollbar {
-    height: 6px;
+    height: 8px; /* Thanh cuộn dày hơn chút */
 }
 
 .book-slider::-webkit-scrollbar-thumb {
-    background: #ccc;
+    background: #c7d2fe; /* Đổi màu thanh cuộn cho đồng bộ */
     border-radius: 50px;
 }
 
-/* ---------------- BOOK CARD ---------------- */
+/* ---------------- BOOK CARD - CẢI TIẾN ---------------- */
 .book-card {
     width: 200px;
     background: white;
     border-radius: 12px;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.08);
-    padding: 12px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.08); /* Tăng độ sâu shadow */
+    padding: 10px; /* Giảm padding nhẹ để bìa sách lớn hơn */
     flex-shrink: 0;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s;
+    cursor: pointer;
+    border: 1px solid transparent; /* Chuẩn bị cho hiệu ứng hover */
+}
+
+.book-card:hover {
+    transform: translateY(-5px); /* Hiệu ứng nhấc nhẹ khi hover */
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    border-color: #2563eb; /* Border màu xanh khi hover */
+}
+
+.book-image {
+    position: relative;
+    /* Đảm bảo hình ảnh được căn chỉnh tốt */
+    overflow: hidden; 
+    border-radius: 8px;
 }
 
 .book-image img {
     width: 100%;
-    height: 240px;
+    height: 250px; /* Tăng chiều cao ảnh */
     object-fit: cover;
     border-radius: 8px;
+    display: block;
 }
 
 .book-info {
     margin-top: 10px;
+    text-align: center; /* Căn giữa thông tin */
 }
 
 .book-title {
-    font-size: 16px;
-    font-weight: 600;
-    margin: 6px 0;
+    font-size: 17px; /* Tăng kích thước */
+    font-weight: 700;
+    margin: 8px 0 4px;
+    color: #1a1a1a;
+    /* Cắt bớt tiêu đề dài */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .book-author {
-    font-size: 13px;
-    color: #777;
-    margin-bottom: 6px;
+    font-size: 14px;
+    color: #555; /* Màu tối hơn */
+    margin-bottom: 8px;
+    font-weight: 400;
 }
 
 .book-price {
-    font-size: 15px;
-    font-weight: bold;
-    color: #e67e22;
-    margin-bottom: 10px;
+    font-size: 18px; /* Tăng kích thước giá */
+    font-weight: 800;
+    color: #b91c1c; /* Đỏ đậm hơn để làm nổi bật giá */
+    margin-bottom: 12px;
 }
 
 .book-btn {
     display: block;
     text-align: center;
-    background: #0a58ca;
+    background: #2563eb; /* Sử dụng màu xanh chủ đạo */
     color: #fff;
-    padding: 8px 0;
+    padding: 10px 0; /* Tăng padding */
     border-radius: 6px;
-    font-size: 13px;
+    font-size: 14px;
+    font-weight: 600;
     text-decoration: none;
-    flex-shrink: 1;
+    transition: 0.2s;
 }
 
 .book-btn:hover {
-    background: #004a9e;
+    background: #1d4ed8;
 }

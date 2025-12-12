@@ -31,8 +31,7 @@ $orders = db_fetch_all("
 ", [':uid' => $userId]);
 
 ?>
-
-<link rel="stylesheet" href="/assets/css/profile.css">
+<link rel="stylesheet" href="assets/css/profile.css">
 
 <div class="profile-container">
 
