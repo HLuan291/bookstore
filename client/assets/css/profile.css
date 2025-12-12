@@ -1,0 +1,71 @@
+.profile-container {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 20px;
+    font-family: "Poppins", sans-serif;
+}
+
+.profile-title {
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.profile-info {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgb(0 0 0 / 10%);
+    margin-bottom: 30px;
+}
+
+.profile-info p {
+    margin: 8px 0;
+    font-size: 15px;
+}
+
+.btn-edit {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 8px 16px;
+    background: #007bff;
+    color: white;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.btn-edit:hover {
+    background: #0056b3;
+}
+
+.order-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgb(0 0 0 / 10%);
+}
+
+.order-table th,
+.order-table td {
+    padding: 12px;
+    border-bottom: 1px solid #eee;
+    text-align: center;
+}
+
+.order-table th {
+    background: #f5f5f5;
+    font-weight: 600;
+}
+
+.status {
+    padding: 5px 12px;
+    border-radius: 4px;
+    font-size: 13px;
+}
+
+.status.choxacnhan { background: #ffcc00; color: #000; }
+.status.danggiaohang { background: #007bff; color: #fff; }
+.status.hoanthanh { background: #28a745; color: #fff; }
+.status.dahuy { background: #dc3545; color: #fff; }

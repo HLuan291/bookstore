@@ -1,0 +1,125 @@
+/* admin/assets/css/login.css */
+
+/* Font chữ và căn giữa màn hình */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f0f2f5;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Hiệu ứng bóng đổ cho Card */
+.card-login {
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    overflow: hidden;
+}
+
+/* Cột trái: Màu đen Gradient */
+.bg-login-image {
+    background: linear-gradient(135deg, #2d3436 0%, #000000 100%);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Input Group: Làm đẹp ô nhập liệu */
+.input-group-text {
+    background-color: #f8f9fa;
+    border-right: none;
+    color: #aaa;
+    border-top-left-radius: 50px;
+    border-bottom-left-radius: 50px;
+}
+
+.form-control {
+    background-color: #f8f9fa;
+    border-left: none;
+    padding: 12px;
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;
+}
+
+/* Khi focus (bấm vào) thì bỏ viền xanh mặc định của Bootstrap */
+.form-control:focus {
+    box-shadow: none;
+    border-color: #dee2e6;
+    background-color: #fff;
+}
+
+/* Khi focus vào input thì icon bên cạnh đổi màu cam */
+.form-control:focus + .input-group-text, 
+.form-control:focus ~ .input-group-text {
+     color: #d35400;
+     background-color: #fff;
+}
+
+/* Nút Login màu Cam */
+.btn-orange {
+    background-color: #d35400;
+    color: white;
+    padding: 12px;
+    font-weight: 600;
+    border-radius: 50px; /* Bo tròn */
+    transition: all 0.3s;
+    border: none;
+}
+
+.btn-orange:hover {
+    background-color: #e67e22;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(211, 84, 0, 0.4);
+}
+
+/* Nút Đăng ký (Viền cam) */
+.btn-outline-orange {
+    color: #d35400;
+    border: 2px solid #d35400;
+    padding: 10px;
+    font-weight: 600;
+    border-radius: 50px;
+    background: transparent;
+    transition: all 0.3s;
+}
+
+.btn-outline-orange:hover {
+    background-color: #d35400;
+    color: white;
+    border-color: #d35400;
+}
+
+/* Link nhỏ màu cam */
+.link-orange { 
+    color: #d35400; 
+    text-decoration: none; 
+    font-weight: 500;
+}
+
+.link-orange:hover { 
+    text-decoration: underline; 
+    color: #e67e22; 
+}
+
+/* Đường kẻ phân cách OR */
+.separator-line {
+    border-bottom: 1px solid #e3e6f0; 
+    margin-top: -12px; 
+    position: relative; 
+    z-index: 1;
+}
+
+.separator-text {
+    background-color: #fff; 
+    padding: 0 10px; 
+    position: relative; 
+    z-index: 2; 
+    color: #aaa;
+    font-size: 12px;
+    font-weight: 600;
+}

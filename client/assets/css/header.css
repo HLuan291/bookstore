@@ -1,0 +1,137 @@
+/* IMPORT FONT */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+/* RESET CƠ BẢN */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: #f5f5f7;
+}
+
+/* ===== HEADER CHUNG ===== */
+
+.header {
+    width: 100%;
+    height: 70px;
+    background: #ffffff;
+    border-bottom: 1px solid #e5e7eb;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+
+    display: flex;
+    align-items: center;
+}
+
+.header-container {
+    width: 90%;
+    max-width: 1300px;
+    margin: 0 auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* LOGO */
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    text-decoration: none;
+    color: #111827;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.logo i {
+    font-size: 24px;
+    color: #2563eb;
+}
+
+/* MENU TRUNG TÂM */
+
+.menu {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+}
+
+.menu a {
+    text-decoration: none;
+    color: #111827;
+    font-size: 14px;
+    font-weight: 500;
+    padding-bottom: 2px;
+    transition: 0.2s;
+}
+
+.menu a:hover {
+    color: #2563eb;
+}
+
+/* KHỐI BÊN PHẢI: SEARCH + ICON */
+
+.right-box {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* Ô TÌM KIẾM */
+
+.search-box {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    background: #f3f4f6;
+    padding: 8px 12px;
+    border-radius: 10px;
+    width: 230px;
+}
+
+.search-box i {
+    color: #9ca3af;
+    font-size: 14px;
+}
+
+.search-box input {
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: 14px;
+    color: #111827;
+}
+
+/* NÚT ICON GIỎ HÀNG + USER */
+
+.icon-btn {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+
+    background: #f3f4f6;
+    border: 1px solid #e5e7eb;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-decoration: none;
+    color: #111827;
+    font-size: 18px;
+    transition: 0.2s;
+}
+
+.icon-btn:hover {
+    background: #e5e7eb;
+}

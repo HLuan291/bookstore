@@ -1,0 +1,23 @@
+.category-list {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.cate-item {
+    background: white;
+    padding: 10px 16px;
+    border-radius: 8px;
+    box-shadow: 0 1px 6px rgba(0,0,0,0.05);
+    transition: .2s;
+}
+
+.cate-item:hover {
+    background: #e67818;
+    color: white;
+}
+
+.product-grid {
+    margin-top: 10px;
+}
