@@ -99,7 +99,6 @@
 
 /* ===== MAIN CONTENT ===== */
 .main-content {
-    margin-left: 230px;          /* tránh bị sidebar đè */
     padding: 20px 25px;          /* tạo khoảng cách đẹp */
     min-height: 100vh;
     background: #F5F6FA;

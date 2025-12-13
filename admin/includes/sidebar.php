@@ -3,8 +3,8 @@
 <div class="sidebar">
 
     <div class="sidebar-header">
-        <i class="fa-solid fa-book"></i>
-        <div class="admin-name">HELLO ADMIN1</div>
+               <i class="fas fa-book-open fa-4x mb-3 text-warning"></i>
+             <h2 class="fw-bold ls-2">BOOKSTORE</h2>
     </div>
 
     <ul class="menu">
@@ -36,12 +36,6 @@
         <li class="<?= ($current_page == 'don_hang') ? 'active' : '' ?>">
             <a href="/admin/don_hang/list.php">
                 <i class="fa-solid fa-cart-shopping"></i> Đơn hàng
-            </a>
-        </li>
-
-        <li class="<?= ($current_page == 'phan_hoi') ? 'active' : '' ?>">
-            <a href="/admin/phan_hoi/list.php">
-                <i class="fa-solid fa-comment-dots"></i> Phản hồi
             </a>
         </li>
 

@@ -2,13 +2,13 @@
 require_once __DIR__ . '/../includes/functions.php';
 
 /* ===============================
-   BIẾN THÔNG BÁO
+    BIẾN THÔNG BÁO
 =============================== */
 $error   = '';
 $success = '';
 
 /* ===============================
-   NẾU ĐÃ ĐĂNG NHẬP → VỀ TRANG CHỦ
+    NẾU ĐÃ ĐĂNG NHẬP → VỀ TRANG CHỦ
 =============================== */
 if (isset($_SESSION['user'])) {
     header("Location: index.php");
@@ -16,7 +16,7 @@ if (isset($_SESSION['user'])) {
 }
 
 /* ===============================
-   XỬ LÝ ĐĂNG KÝ
+    XỬ LÝ ĐĂNG KÝ
 =============================== */
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
@@ -62,38 +62,57 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
             $id_nguoidung = 'U' . str_pad($newNumber, 3, '0', STR_PAD_LEFT);
 
+            /* 3.5. TẠO ID CHO NGUOI_DUNG_VAI_TRO (R001…) */
+            // Lấy ID vai trò người dùng gần nhất
+            $lastRole = db_one("
+                SELECT id_nguoidungvaitro
+                FROM nguoi_dung_vai_tro
+                ORDER BY id DESC
+                LIMIT 1
+            ");
+
+            // Tạo ID mới cho Nguoi_Dung_Vai_Tro
+            if ($lastRole && preg_match('/R(\d+)/', $lastRole['id_nguoidungvaitro'], $m)) {
+                $newRoleNumber = intval($m[1]) + 1;
+            } else {
+                $newRoleNumber = 1;
+            }
+
+            $idNguoiDungVaiTro = 'R' . str_pad($newRoleNumber, 3, '0', STR_PAD_LEFT);
+            $idVaiTroUser = 'VT03'; // Khách hàng
+
             /* 4. INSERT NGƯỜI DÙNG */
-                    db_execute("
-                        INSERT INTO nguoi_dung
-                        (id_nguoidung, ho_ten, email, so_dien_thoai, mat_khau, trang_thai, ngay_tao)
-                        VALUES
-                        (:id, :hoten, :email, :sdt, :mk, 1, NOW())
-                    ", [
-                        ':id'    => $id_nguoidung,
-                        ':hoten' => $ho_ten,
-                        ':email' => $email,
-                        ':sdt'   => $sdt,
-                        ':mk'    => password_hash($mat_khau, PASSWORD_DEFAULT)
-                    ]);
+            db_execute("
+                INSERT INTO nguoi_dung
+                (id_nguoidung, ho_ten, email, so_dien_thoai, mat_khau, trang_thai, ngay_tao)
+                VALUES
+                (:id, :hoten, :email, :sdt, :mk, 1, NOW())
+            ", [
+                ':id'    => $id_nguoidung,
+                ':hoten' => $ho_ten,
+                ':email' => $email,
+                ':sdt'   => $sdt,
+                ':mk'    => password_hash($mat_khau, PASSWORD_DEFAULT)
+            ]);
 
-                $idVaiTroUser = 'VT03'; // Khách hàng
-
-        db_execute("
-            INSERT INTO nguoi_dung_vai_tro
-            (id_nguoidungvaitro, id_nguoidung, id_vaitro)
-            VALUES
-            (:id_ndvt, :id_nd, :id_vt)
-        ", [
-            ':id_ndvt' => $idNguoiDungVaiTro,
-            ':id_nd'   => $id_nguoidung,
-            ':id_vt'   => $idVaiTroUser
-        ]);
+            /* 5. PHÂN VAI TRÒ (INSERT VÀO nguoi_dung_vai_tro) */
+            db_execute("
+                INSERT INTO nguoi_dung_vai_tro
+                (id_nguoidungvaitro, id_nguoidung, id_vaitro)
+                VALUES
+                (:id_ndvt, :id_nd, :id_vt)
+            ", [
+                ':id_ndvt' => $idNguoiDungVaiTro, // Đã được khai báo và gán giá trị ở bước 3.5
+                ':id_nd'   => $id_nguoidung,
+                ':id_vt'   => $idVaiTroUser
+            ]);
 
             $success = "Đăng ký thành công! Vui lòng đăng nhập.";
         }
     }
 }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="vi">

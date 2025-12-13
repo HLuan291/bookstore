@@ -30,7 +30,7 @@ $rows = db_fetch_all($sql, [':kw' => "%$keyword%"]);
 <link rel="stylesheet" href="../assets/css/danh_muc.css">
 <link rel="stylesheet" href="../assets/css/admin.css">
 <div class="page-header">
-    <h1>Sách</h1>
+    <h1>Danh Mục</h1>
     <a href="add.php" class="btn-add">+ Thêm</a>
 </div>
 
@@ -63,11 +63,10 @@ $rows = db_fetch_all($sql, [':kw' => "%$keyword%"]);
 
         <td class="actions">
 
-            <a class="icon edit" href="edit.php?id=<?= $r['id'] ?>">
+            <a class="edit" href="edit.php?id=<?= $r['id'] ?>">
                <i class="fa-solid fa-pen"></i>
             </a>
-
-            <a class="icon delete"
+            <a class="delete"
                onclick="return confirm('Bạn có chắc muốn xóa danh mục này?')"
                href="delete.php?id=<?= $r['id'] ?>">
                 <i class="fa fa-trash"></i>

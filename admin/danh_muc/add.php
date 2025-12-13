@@ -6,24 +6,24 @@ $success = "";
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-    $id_danhmuc   = trim($_POST['id_danhmuc']);
-    $ten_danh_muc = trim($_POST['ten_danh_muc']);
-    $trang_thai   = $_POST['trang_thai'];
+    $id_danhmuc   = trim($_POST['id_danhmuc'] ?? '');
+    $ten_danh_muc = trim($_POST['ten_danh_muc'] ?? '');
+    $trang_thai   = isset($_POST['trang_thai']) ? 1 : 0;
 
-    // Kiểm tra rỗng
-    if (!$id_danhmuc || !$ten_danh_muc) {
+    if ($id_danhmuc === '' || $ten_danh_muc === '') {
         $error = "Vui lòng nhập đầy đủ thông tin!";
     } else {
 
-        // Kiểm tra trùng mã danh mục
+        // Kiểm tra trùng mã
         $check = db_fetch(
             "SELECT id_danhmuc FROM danh_muc WHERE id_danhmuc = :id",
             [':id' => $id_danhmuc]
         );
 
         if ($check) {
-            $error = "Mã danh mục đã tồn tại, vui lòng nhập mã khác!";
+            $error = "Mã danh mục đã tồn tại!";
         } else {
+
             db_execute("
                 INSERT INTO danh_muc (id_danhmuc, ten_danh_muc, trang_thai)
                 VALUES (:id, :ten, :tt)
@@ -33,7 +33,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 ':tt'  => $trang_thai
             ]);
 
-            $success = "Thêm danh mục thành công!";
+            $success = "✅ Thêm danh mục thành công!";
+            $_POST = []; // reset form
         }
     }
 }
@@ -41,6 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <link rel="stylesheet" href="../assets/css/danh_muc.css">
 <link rel="stylesheet" href="../assets/css/admin.css">
+
 <div class="form-page">
     <div class="form-box">
 
@@ -58,30 +60,34 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             <div class="form-group">
                 <label>Mã danh mục</label>
-                <input type="text" name="id_danhmuc" placeholder="VD: DM01" required>
+                <input type="text" name="id_danhmuc"
+                       value="<?= htmlspecialchars($_POST['id_danhmuc'] ?? '') ?>"
+                       placeholder="VD: DM01" required>
             </div>
 
             <div class="form-group">
                 <label>Tên danh mục</label>
-                <input type="text" name="ten_danh_muc" placeholder="VD: Sách giáo khoa" required>
+                <input type="text" name="ten_danh_muc"
+                       value="<?= htmlspecialchars($_POST['ten_danh_muc'] ?? '') ?>"
+                       placeholder="VD: Sách giáo khoa" required>
             </div>
 
-            <div class="form-group">
-                <label>Trạng thái</label>
-                <select name="trang_thai">
-                    <option value="1">Hoạt động</option>
-                    <option value="0">Ẩn</option>
-                </select>
+            <div class="form-row">
+                <label class="switch">
+                    <input type="checkbox" name="trang_thai" checked>
+                    <span class="slider round"></span>
+                </label>
+                <span>Hoạt động</span>
             </div>
 
- <div class="form-actions">
-            <a href="list.php" class="btn-cancel">Hủy</a>
-            <button class="btn-add">Lưu</button>
-        </div>
+            <div class="form-actions">
+                <a href="list.php" class="btn-cancel">Hủy</a>
+                <button type="submit" class="btn-add">Lưu</button>
+            </div>
 
         </form>
-
     </div>
 </div>
 
 <?php include __DIR__ . '/../includes/footer.php'; ?>
+            

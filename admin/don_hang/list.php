@@ -80,8 +80,8 @@ $rows = db_fetch_all("
     <td><?= number_format($r['tong_tien'], 0, ',', '.') ?>đ</td>
 
     <td class="actions">
-        <a class="view" href="detail.php?id=<?= $r['id'] ?>"><i class="fa-solid fa-eye"></i></a>
-        <a class="edit" href="update.php?id=<?= $r['id'] ?>"><i class="fa-solid fa-pen"></i></a>
+        <a class="view" href="handle.php?id=<?= $r['id'] ?>"><i class="fa-solid fa-eye"></i></a>
+        <a class="edit" href="detail.php?id=<?= $r['id'] ?>"><i class="fa-solid fa-pen"></i></a>
     </td>
 </tr>
 <?php endforeach; ?>

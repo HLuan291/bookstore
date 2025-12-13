@@ -4,8 +4,8 @@ require_once __DIR__ . '/../includes/header.php';
 require_once __DIR__ . '/../includes/functions.php';
 
 /* ===============================
-   LẤY ID NGƯỜI DÙNG (CHAR)
-================================ */
+   LẤY ID NGƯỜI DÙNG
+=============================== */
 $id_nguoidung = trim($_GET['id_nguoidung'] ?? '');
 
 if ($id_nguoidung === '') {
@@ -15,7 +15,7 @@ if ($id_nguoidung === '') {
 
 /* ===============================
    LẤY USER
-================================ */
+=============================== */
 $user = db_fetch("
     SELECT *
     FROM nguoi_dung
@@ -28,26 +28,31 @@ if (!$user) {
 }
 
 /* ===============================
-   LẤY VAI TRÒ
-================================ */
+   LẤY DANH SÁCH VAI TRÒ
+=============================== */
 $roles = db_fetch_all("
     SELECT id_vaitro, ten_vai_tro
     FROM vai_tro
+    ORDER BY ten_vai_tro
 ");
 
+/* ===============================
+   VAI TRÒ HIỆN TẠI
+=============================== */
 $currentRole = db_fetch("
-    SELECT id_vaitro
+    SELECT id_nguoidungvaitro, id_vaitro
     FROM nguoi_dung_vai_tro
     WHERE id_nguoidung = :id
 ", [':id' => $id_nguoidung]);
 
-$currentRoleId = $currentRole['id_vaitro'] ?? '';
+$currentRoleId       = $currentRole['id_vaitro'] ?? '';
+$id_nguoidungvaitro  = $currentRole['id_nguoidungvaitro'] ?? '';
 
 $error = $success = '';
 
 /* ===============================
    XỬ LÝ SUBMIT
-================================ */
+=============================== */
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $ho_ten     = trim($_POST['ho_ten'] ?? '');
@@ -61,6 +66,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $error = "❌ Vui lòng nhập đầy đủ thông tin bắt buộc.";
     } else {
 
+        /* CHECK EMAIL TRÙNG */
         $exists = db_fetch("
             SELECT id
             FROM nguoi_dung
@@ -74,10 +80,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if ($exists) {
             $error = "❌ Email đã tồn tại.";
         } else {
+
             try {
                 db()->beginTransaction();
 
-                /* UPDATE USER */
+                /* ===== UPDATE NGƯỜI DÙNG ===== */
                 $sql = "
                     UPDATE nguoi_dung
                     SET ho_ten = :ho_ten,
@@ -103,21 +110,30 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                 db_execute($sql, $params);
 
-                /* UPDATE ROLE */
-                db_execute("
-                    DELETE FROM nguoi_dung_vai_tro
-                    WHERE id_nguoidung = :id
-                ", [':id' => $id_nguoidung]);
-
-                db_execute("
-                    INSERT INTO nguoi_dung_vai_tro (id_nguoidung, id_vaitro)
-                    VALUES (:id, :vt)
-                ", [
-                    ':id' => $id_nguoidung,
-                    ':vt' => $vai_tro
-                ]);
+                /* ===== UPDATE VAI TRÒ ===== */
+                if ($id_nguoidungvaitro) {
+                    // ĐÃ CÓ → UPDATE
+                    db_execute("
+                        UPDATE nguoi_dung_vai_tro
+                        SET id_vaitro = :vt
+                        WHERE id_nguoidungvaitro = :ndvt
+                    ", [
+                        ':vt'   => $vai_tro,
+                        ':ndvt' => $id_nguoidungvaitro
+                    ]);
+                } else {
+                    // CHƯA CÓ → INSERT
+                    db_execute("
+                        INSERT INTO nguoi_dung_vai_tro (id_nguoidung, id_vaitro)
+                        VALUES (:id, :vt)
+                    ", [
+                        ':id' => $id_nguoidung,
+                        ':vt' => $vai_tro
+                    ]);
+                }
 
                 db()->commit();
+
                 $success = "✅ Cập nhật thành công!";
                 $currentRoleId = $vai_tro;
 
@@ -130,20 +146,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             } catch (Exception $e) {
                 db()->rollBack();
-                $error = "❌ Lỗi hệ thống: " . $e->getMessage();
+                $error = "❌ Lỗi hệ thống!";
             }
         }
     }
 }
 ?>
 
-<link rel="stylesheet" href="../assets/css/nguoi_dung.css">
 <link rel="stylesheet" href="../assets/css/admin.css">
+<link rel="stylesheet" href="../assets/css/nguoi_dung.css">
+
 <div class="form-container">
     <h2>Sửa Người Dùng</h2>
 
-    <?php if ($error): ?><div class="alert error"><?= $error ?></div><?php endif; ?>
-    <?php if ($success): ?><div class="alert success"><?= $success ?></div><?php endif; ?>
+    <?php if ($error): ?><div class="alert error"><?= htmlspecialchars($error) ?></div><?php endif; ?>
+    <?php if ($success): ?><div class="alert success"><?= htmlspecialchars($success) ?></div><?php endif; ?>
 
     <form method="POST">
 
@@ -176,7 +193,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <div class="form-group">
                 <label>Số điện thoại</label>
                 <input type="text" name="so_dien_thoai"
-                       value="<?= htmlspecialchars($user['so_dien_thoai']) ?>">
+                       value="<?= htmlspecialchars($user['so_dien_thoai'] ?? '') ?>">
             </div>
             <div class="form-group">
                 <label>Vai trò</label>
@@ -200,10 +217,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <span>Hoạt động</span>
         </div>
 
- <div class="form-actions">
-            <a href="list.php" class="btn-cancel">Hủy</a>
-            <button class="btn-add">Lưu</button>
-        </div>
+   <div class="form-actions">
+                <a href="list.php" class="btn-cancel">Hủy</a>
+                <button class="btn-submit">Lưu</button>
+            </div>
 
     </form>
 </div>

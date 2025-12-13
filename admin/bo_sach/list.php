@@ -36,7 +36,7 @@ $rows = db_fetch_all("
 <link rel="stylesheet" href="../assets/css/bo_sach.css">
 <link rel="stylesheet" href="../assets/css/admin.css">
 <div class="page-header">
-    <h1>Sách</h1>
+    <h1>Bộ Sách</h1>
     <a href="add.php" class="btn-add">+ Thêm</a>
 </div>
 
