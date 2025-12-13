@@ -8,6 +8,7 @@ body {
 
 .cart-container {
     width: 90%;
+    max-width: 1200px; /* Thêm max-width để không bị quá rộng trên màn hình lớn */
     margin: 40px auto;
 }
 
@@ -64,24 +65,44 @@ body {
     opacity: 0.7;
 }
 
-/* === QUANTITY BUTTONS === */
+/* === QUANTITY BUTTONS (ĐÃ CHỈNH SỬA) === */
 .cart-qty {
     display: flex;
     align-items: center;
     gap: 10px;
 }
 
+/* Sử dụng Flexbox để căn giữa dấu cộng trừ hoàn hảo */
 .qty-btn {
-    width: 26px;
-    height: 26px;
+    width: 32px;            /* Tăng kích thước lên một chút cho dễ bấm */
+    height: 32px;
     border: 1px solid #ccc;
-    background: #fafafa;
+    background: #fff;
     border-radius: 50%;
     cursor: pointer;
+    
+    /* Code căn giữa quan trọng */
+    display: flex;
+    align-items: center;     /* Căn giữa chiều dọc */
+    justify-content: center; /* Căn giữa chiều ngang */
+    
+    text-decoration: none;   /* Bỏ gạch chân thẻ a */
+    color: #333;
+    font-size: 18px;         /* Kích thước dấu +/- */
+    line-height: 1;          /* Reset chiều cao dòng */
+    transition: all 0.2s;
+}
+
+.qty-btn:hover {
+    background: #f0f0f0;
+    border-color: #999;
 }
 
 .qty-number {
     font-weight: 600;
+    font-size: 16px;
+    min-width: 20px;        /* Đảm bảo số không bị nhảy khi thay đổi */
+    text-align: center;
 }
 
 /* === PRICE === */
@@ -92,6 +113,7 @@ body {
 
 .cart-total strong {
     font-size: 16px;
+    color: #b91c1c; /* Thêm màu đỏ cho tổng tiền từng món */
 }
 
 .continue-link {
@@ -100,6 +122,11 @@ body {
     color: #4c6ef5;
     text-decoration: none;
     font-size: 14px;
+    font-weight: 500;
+}
+
+.continue-link:hover {
+    text-decoration: underline;
 }
 
 /* === SHIPPING FORM === */
@@ -108,6 +135,8 @@ body {
     padding: 25px;
     border-radius: 12px;
     height: fit-content;
+    position: sticky; /* Giúp khung thanh toán trượt theo khi cuộn trang */
+    top: 20px;
 }
 
 .ship-title {
@@ -119,29 +148,44 @@ body {
 .ship-form label {
     font-size: 14px;
     font-weight: 600;
+    display: block; /* Đảm bảo label xuống dòng */
+    margin-bottom: 5px;
 }
 
 .ship-form input,
 .ship-form select {
     width: 100%;
-    padding: 10px;
-    margin: 6px 0 15px 0;
+    padding: 10px; /* Tăng padding để dễ nhập */
+    margin: 0 0 15px 0; /* Margin dưới tách các ô */
     border-radius: 6px;
-    border: 1px solid #ccc;
+    border: 1px solid #ddd;
     background: #fdfdfd;
     font-size: 14px;
+    box-sizing: border-box; /* Đảm bảo padding không làm vỡ layout */
+}
+
+.ship-form input:focus {
+    border-color: #4c6ef5;
+    outline: none;
 }
 
 .btn-checkout {
     display: block;
     width: 100%;
-    padding: 12px;
+    padding: 14px;
     background: #4c6ef5;
     text-align: center;
     color: #fff;
     text-decoration: none;
     border-radius: 8px;
-    font-size: 15px;
+    font-size: 16px;
     font-weight: 600;
     margin-top: 10px;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.btn-checkout:hover {
+    background: #3b5bdb;
 }

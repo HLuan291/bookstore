@@ -35,6 +35,10 @@ switch ($page) {
     case 'checkout':
         include __DIR__ . '/page/checkout.php';
         break;
+        
+    case 'search':
+        include __DIR__ . '/page/search.php';
+        break;
 
     case 'profile':
         include __DIR__ . '/page/profile.php';
