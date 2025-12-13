@@ -38,7 +38,7 @@ $rows = db_fetch_all("
 ", $params);
 
 ?>
-
+<link rel="stylesheet" href="../assets/css/phan_hoi.css">
 <div class="page-header">
     <h1>Phản hồi người dùng</h1>
 </div>
