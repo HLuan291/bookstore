@@ -39,15 +39,18 @@ $rows = db_fetch_all("
 
 ?>
 <link rel="stylesheet" href="../assets/css/phan_hoi.css">
+<link rel="stylesheet" href="../assets/css/admin.css">
 <div class="page-header">
-    <h1>Phản hồi người dùng</h1>
+    <h1>Sách</h1>
+    <a href="add.php" class="btn-add">+ Thêm</a>
 </div>
 
 <div class="search-box">
     <form>
-        <input name="keyword" value="<?= htmlspecialchars($keyword) ?>" placeholder="Tìm kiếm phản hồi...">
+        <input name="keyword" value="<?= htmlspecialchars($keyword) ?>" placeholder="Tìm kiếm sách...">
     </form>
 </div>
+
 
 <table class="table-admin">
 <tr>

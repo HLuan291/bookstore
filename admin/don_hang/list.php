@@ -36,6 +36,7 @@ $rows = db_fetch_all("
 ", $params);
 ?>
 <link rel="stylesheet" href="../assets/css/don_hang.css">
+<link rel="stylesheet" href="../assets/css/admin.css">
 <div class="page-header">
     <h1>Đơn hàng</h1>
 </div>

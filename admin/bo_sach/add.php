@@ -24,7 +24,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $success = "Thêm bộ sách thành công!";
 }
 ?>
-
+<link rel="stylesheet" href="../assets/css/admin.css">
+<link rel="stylesheet" href="../assets/css/bo_sach.css">
 <div class="form-page">
 <h1>Thêm Bộ Sách</h1>
 
@@ -56,8 +57,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     <label>Giá:</label>
     <input type="number" name="gia" required>
-
-    <button class="btn-save">Lưu lại</button>
+        <div class="form-actions">
+            <a href="list.php" class="btn-cancel">Hủy</a>
+            <button class="btn-add">Lưu</button>
+        </div>
 </form>
 </div>
 

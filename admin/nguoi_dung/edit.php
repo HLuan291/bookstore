@@ -138,7 +138,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 ?>
 
 <link rel="stylesheet" href="../assets/css/nguoi_dung.css">
-
+<link rel="stylesheet" href="../assets/css/admin.css">
 <div class="form-container">
     <h2>Sửa Người Dùng</h2>
 
@@ -200,9 +200,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <span>Hoạt động</span>
         </div>
 
-        <div class="form-actions">
+ <div class="form-actions">
             <a href="list.php" class="btn-cancel">Hủy</a>
-            <button class="btn-submit">Lưu thay đổi</button>
+            <button class="btn-add">Lưu</button>
         </div>
 
     </form>

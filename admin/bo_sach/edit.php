@@ -5,7 +5,8 @@ require_once __DIR__ . '/../includes/header.php';
 // $id, $bosach, $sachs, $danhmucs, $success được giữ nguyên
 // ... (Phần xử lý POST không thay đổi) ...
 ?>
-
+<link rel="stylesheet" href="../assets/css/admin.css">
+<link rel="stylesheet" href="../assets/css/bo_sach.css">
 <div class="form-wrapper"> 
     
     <h1 class="form-title">Sửa Bộ Sách</h1>
@@ -66,10 +67,10 @@ require_once __DIR__ . '/../includes/header.php';
                 </div>
             </div>
             
-            <div class="form-actions">
-                <a href="index.php" class="btn-cancel">Hủy</a>
-                <button type="submit" class="btn-save">Lưu thay đổi</button> 
-            </div>
+ <div class="form-actions">
+            <a href="list.php" class="btn-cancel">Hủy</a>
+            <button class="btn-add">Lưu</button>
+        </div>
 
         </div> </form>
 </div> <?php include __DIR__ . '/../includes/footer.php'; ?>

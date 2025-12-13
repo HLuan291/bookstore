@@ -62,10 +62,16 @@ if (!$rows) $rows = [];
 ?>
 
 <link rel="stylesheet" href="../assets/css/nguoi_dung.css">
-
+<link rel="stylesheet" href="../assets/css/admin.css">
 <div class="page-header">
-    <h1>Người dùng</h1>
+    <h1>Sách</h1>
     <a href="add.php" class="btn-add">+ Thêm</a>
+</div>
+
+<div class="search-box">
+    <form>
+        <input name="keyword" value="<?= htmlspecialchars($keyword) ?>" placeholder="Tìm kiếm sách...">
+    </form>
 </div>
 
 <table class="table-admin">

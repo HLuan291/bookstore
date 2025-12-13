@@ -40,7 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 ?>
 
 <link rel="stylesheet" href="../assets/css/danh_muc.css">
-
+<link rel="stylesheet" href="../assets/css/admin.css">
 <div class="form-page">
     <div class="form-box">
 
@@ -74,10 +74,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </select>
             </div>
 
-            <div class="form-actions">
-                <a href="list.php" class="btn-cancel">Hủy</a>
-                <button class="btn-submit">Thêm</button>
-            </div>
+ <div class="form-actions">
+            <a href="list.php" class="btn-cancel">Hủy</a>
+            <button class="btn-add">Lưu</button>
+        </div>
 
         </form>
 

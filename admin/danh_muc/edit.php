@@ -54,7 +54,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 ?>
 
 <link rel="stylesheet" href="../assets/css/danh_muc.css">
-
+<link rel="stylesheet" href="../assets/css/admin.css">
 <div class="page-header">
     <h1>Chỉnh Sửa Danh Mục</h1>
 </div>
