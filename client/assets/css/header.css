@@ -170,3 +170,42 @@ body {
     color: #2563eb; /* Đổi màu icon khi hover */
     border-color: #2563eb;
 }
+/* CSS SỐ LƯỢNG TRÊN GIỎ HÀNG */
+        .cart-badge {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background-color: #ff3b30;
+            color: white;
+            font-size: 11px;
+            font-weight: bold;
+            padding: 0;
+            width: 18px;
+            height: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            border: 2px solid #fff;
+        }
+
+        /* CSS CHO AVATAR TRÊN HEADER */
+        .header-user-avatar {
+            width: 32px;        /* Kích thước ảnh */
+            height: 32px;
+            border-radius: 50%; /* Bo tròn hoàn toàn */
+            object-fit: cover;  /* Cắt ảnh vừa khung tròn */
+            border: 2px solid #ddd; /* Viền nhẹ */
+            transition: 0.2s;
+        }
+        .header-user-avatar:hover {
+            border-color: #333; /* Đổi màu viền khi di chuột */
+        }
+        
+        /* Căn chỉnh lại nút chứa avatar để không bị lệch */
+        .icon-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            vertical-align: middle;
+        }
