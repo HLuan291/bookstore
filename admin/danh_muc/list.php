@@ -28,18 +28,18 @@ $rows = db_fetch_all($sql, [':kw' => "%$keyword%"]);
 ?>
 
 <link rel="stylesheet" href="../assets/css/danh_muc.css">
-
+<link rel="stylesheet" href="../assets/css/admin.css">
 <div class="page-header">
-    <h1>Danh mục</h1>
-
-    <div class="page-actions">
-        <a href="add.php" class="btn-add">
-            <i class="fa fa-plus"></i> Thêm
-        </a>
-    </div>
+    <h1>Danh Mục</h1>
+    <a href="add.php" class="btn-add">+ Thêm</a>
 </div>
 
-<div class="table-wrap">
+<div class="search-box">
+    <form>
+        <input name="keyword" value="<?= htmlspecialchars($keyword) ?>" placeholder="Tìm kiếm sách...">
+    </form>
+</div>
+
 <table class="table-admin">
 
     <tr>
@@ -63,11 +63,10 @@ $rows = db_fetch_all($sql, [':kw' => "%$keyword%"]);
 
         <td class="actions">
 
-            <a class="icon edit" href="edit.php?id=<?= $r['id'] ?>">
+            <a class="edit" href="edit.php?id=<?= $r['id'] ?>">
                <i class="fa-solid fa-pen"></i>
             </a>
-
-            <a class="icon delete"
+            <a class="delete"
                onclick="return confirm('Bạn có chắc muốn xóa danh mục này?')"
                href="delete.php?id=<?= $r['id'] ?>">
                 <i class="fa fa-trash"></i>
@@ -78,7 +77,6 @@ $rows = db_fetch_all($sql, [':kw' => "%$keyword%"]);
     <?php endforeach; ?>
 
 </table>
-</div>
 
 <!-- PAGINATION -->
 <div class="pagination">

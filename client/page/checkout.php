@@ -52,7 +52,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         // B. Lưu đơn hàng vào bảng don_hang (Khớp với cấu trúc DB mới sửa)
         $sql_order = "INSERT INTO don_hang (id_donhang, id_nguoidung, hoten, email, sdt, diachi, tong_tien, ngay_dat, trang_thai, phuong_thuc_thanh_toan, trang_thai_thanh_toan) 
-                      VALUES (:id, :idu, :hoten, :email, :sdt, :diachi, :tong, NOW(), 'Đang xử lý', 'COD', 'Chưa thanh toán')";
+                      VALUES (:id, :idu, :hoten, :email, :sdt, :diachi, :tong, NOW(), 'Cho xu ly', 'COD', 'Chưa thanh toán')";
         
         db_run($sql_order, [
             ':id' => $order_id, 

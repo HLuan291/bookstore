@@ -54,41 +54,42 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 ?>
 
 <link rel="stylesheet" href="../assets/css/danh_muc.css">
+<link rel="stylesheet" href="../assets/css/admin.css">
+<div class="form-wrapper"> 
 
 <div class="page-header">
     <h1>Chỉnh Sửa Danh Mục</h1>
 </div>
+<form method="post">
 
-<div class="form-box">
-
-    <?php if ($success): ?>
-        <div class="alert success"><?= $success ?></div>
-    <?php endif; ?>
-
-    <?php if ($error): ?>
-        <div class="alert error"><?= $error ?></div>
-    <?php endif; ?>
-
-    <form method="post">
-
-        <label>Mã danh mục:</label>
-        <input type="text" name="id_danhmuc" value="<?= htmlspecialchars($data['id_danhmuc']) ?>">
-
-        <label>Tên danh mục:</label>
-        <input type="text" name="ten_danh_muc" value="<?= htmlspecialchars($data['ten_danh_muc']) ?>" required>
-
-        <label>Trạng thái:</label>
-        <select name="trang_thai">
-            <option value="1" <?= $data['trang_thai'] == 1 ? "selected" : "" ?>>Hoạt động</option>
-            <option value="0" <?= $data['trang_thai'] == 0 ? "selected" : "" ?>>Ẩn</option>
-        </select>
-
-        <div class="form-actions">
-            <a href="list.php" class="btn-cancel">Hủy</a>
-            <button class="btn-add">Lưu</button>
+    <div class="form-row">
+        <div class="form-group">
+            <label>Mã danh mục</label>
+            <input type="text" name="id_danhmuc"
+                   value="<?= htmlspecialchars($data['id_danhmuc']) ?>">
         </div>
 
-    </form>
+        <div class="form-group">
+            <label>Tên danh mục</label>
+            <input type="text" name="ten_danh_muc"
+                   value="<?= htmlspecialchars($data['ten_danh_muc']) ?>">
+        </div>
+    </div>
+
+    <div class="status-row">
+        <label class="switch">
+            <input type="checkbox" name="trang_thai"
+                <?= $data['trang_thai'] == 1 ? 'checked' : '' ?>>
+            <span class="slider"></span>
+        </label>
+        <span class="status-text">Hoạt động</span>
+    </div>
+
+    <div class="form-actions">
+        <a href="list.php" class="btn-cancel">Hủy</a>
+        <button type="submit" class="btn-add">Lưu</button>
+    </div>
 </div>
+</form>
 
 <?php include __DIR__ . '/../includes/footer.php'; ?>

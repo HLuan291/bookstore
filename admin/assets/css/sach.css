@@ -196,31 +196,7 @@ textarea {
     height: 90px;
 }
 
-/* BUTTONS */
-.form-actions {
-    margin-top: 25px;
-    display: flex;
-    justify-content: flex-end;
-    gap: 15px;
-}
 
-.btn-cancel {
-    padding: 10px 25px;
-    border-radius: 8px;
-    background: #e0e0e0;
-    text-decoration: none;
-    color: #333;
-}
-
-.btn-submit {
-    padding: 10px 28px;
-    background: #ff7a2f;
-    border: none;
-    border-radius: 8px;
-    color: #fff;
-    cursor: pointer;
-    font-weight: 600;
-}
 /*edit*/
 /* --- BỐ CỤC CHUNG CHO FORM EDIT --- */
 

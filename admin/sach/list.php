@@ -44,7 +44,7 @@ $rows = db_fetch_all("
 ?>
 
 <link rel="stylesheet" href="../assets/css/sach.css">
-
+<link rel="stylesheet" href="../assets/css/admin.css">
 <div class="page-header">
     <h1>Sách</h1>
     <a href="add.php" class="btn-add">+ Thêm</a>
@@ -72,7 +72,7 @@ $rows = db_fetch_all("
 <?php foreach ($rows as $r): ?>
 <tr>
     <td><?= $r['id'] ?></td>
-    <td>#<?= $r['id_sach'] ?></td>
+    <td><?= $r['id_sach'] ?></td>
     <td><?= $r['ten_sach'] ?></td>
     <td><?= $r['tac_gia'] ?></td>
     <td><?= $r['ten_danh_muc'] ?></td>

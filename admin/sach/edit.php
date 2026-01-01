@@ -77,6 +77,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
 }
 ?>
 <link rel="stylesheet" href="../assets/css/sach.css">
+<link rel="stylesheet" href="../assets/css/admin.css">
 <div class="form-wrapper"> 
     
     <h1 class="form-title">Sửa Sách</h1>

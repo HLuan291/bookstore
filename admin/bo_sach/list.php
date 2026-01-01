@@ -34,11 +34,17 @@ $rows = db_fetch_all("
 ", $params);
 ?>
 <link rel="stylesheet" href="../assets/css/bo_sach.css">
+<link rel="stylesheet" href="../assets/css/admin.css">
 <div class="page-header">
-    <h1>Bộ sách</h1>
+    <h1>Bộ Sách</h1>
     <a href="add.php" class="btn-add">+ Thêm</a>
 </div>
 
+<div class="search-box">
+    <form>
+        <input name="keyword" value="<?= htmlspecialchars($keyword) ?>" placeholder="Tìm kiếm sách...">
+    </form>
+</div>
 
 <table class="table-admin">
 <tr>
