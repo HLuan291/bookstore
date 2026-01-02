@@ -47,7 +47,18 @@ switch ($page) {
     case 'orders':
         include __DIR__ . '/page/orders.php';
         break;
-
+    case 'sale':
+        include __DIR__ . '/page/category.php'; // Dùng chung giao diện với category
+        break;
+    case 'new':
+        include __DIR__ . '/page/category.php'; // Dùng chung giao diện với category
+        break;
+    case 'highlight': // Case cho sách hot (khớp với link trong home.php)
+        include __DIR__ . '/page/category.php';
+        break;
+    case 'feedback':
+       include __DIR__ . '/page/feedback.php';
+       break;
     case 'logout':
         session_destroy();
         header("Location: index.php");

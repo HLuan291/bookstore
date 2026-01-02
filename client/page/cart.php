@@ -5,7 +5,6 @@ if (!isset($_SESSION['user'])) {
 }
 // ------------------------------------------------------------------
 // PHẦN 1: XỬ LÝ LOGIC (PHP)
-
 // ------------------------------------------------------------------
 error_reporting(E_ALL & ~E_NOTICE);
 
@@ -28,7 +27,6 @@ if (isset($_GET['action']) && $_GET['action'] == 'add') {
             $_SESSION['cart'][$id] = 1;
         }
     }
-    // Quay lại trang trước
     $redirect_url = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : 'index.php';
     if (strpos($redirect_url, 'action=') !== false) { $redirect_url = 'index.php'; }
     echo "<script>window.location.href='$redirect_url';</script>";
@@ -65,6 +63,13 @@ if (!empty($_SESSION['cart'])) {
                     $book_id = $book['id_sach'];
                     if(isset($_SESSION['cart'][$book_id])) {
                         $book['qty'] = $_SESSION['cart'][$book_id];
+                        
+                        // LOGIC QUAN TRỌNG: Kiểm tra giá giảm
+                        $selling_price = ($book['gia_giam'] > 0 && $book['gia_giam'] < $book['gia']) 
+                                         ? $book['gia_giam'] 
+                                         : $book['gia'];
+                        
+                        $book['current_price'] = $selling_price;
                         $cart_list[] = $book;
                     }
                 }
@@ -88,7 +93,8 @@ if (!empty($_SESSION['cart'])) {
                 </div>
             <?php else: ?>
                 <?php foreach ($cart_list as $item): 
-                    $thanh_tien = $item['gia'] * $item['qty'];
+                    // Tính thành tiền dựa trên giá hiện tại (đã xử lý giảm giá)
+                    $thanh_tien = $item['current_price'] * $item['qty'];
                     $total_money += $thanh_tien;
                 ?>
                 <div class="cart-item">
@@ -104,7 +110,14 @@ if (!empty($_SESSION['cart'])) {
                         <a href="index.php?page=cart&action=add&id=<?= $item['id_sach'] ?>" class="qty-btn" style="text-decoration: none;">+</a>
                     </div>
 
-                    <div class="cart-price"><?= number_format($item['gia']) ?>₫</div>
+                    <div class="cart-price">
+                        <?php if ($item['gia_giam'] > 0 && $item['gia_giam'] < $item['gia']): ?>
+                            <div style="font-size: 0.8em; color: #999; text-decoration: line-through;"><?= number_format($item['gia']) ?>₫</div>
+                            <div style="color: #d32f2f; font-weight: bold;"><?= number_format($item['current_price']) ?>₫</div>
+                        <?php else: ?>
+                            <?= number_format($item['gia']) ?>₫
+                        <?php endif; ?>
+                    </div>
                     <div class="cart-total"><strong><?= number_format($thanh_tien) ?>₫</strong></div>
                 </div>
                 <?php endforeach; ?>

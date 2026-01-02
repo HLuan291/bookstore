@@ -1,0 +1,104 @@
+/* Layout chính cho trang Feedback */
+.feedback-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    margin-top: 30px;
+}
+
+/* Danh sách đánh giá bên trái */
+.feedback-list h3, .feedback-form h3 {
+    margin-bottom: 20px;
+    color: #111827;
+}
+
+.feedback-item {
+    background: #f9fafb;
+    padding: 20px;
+    border-radius: 12px;
+    margin-bottom: 15px;
+    border-left: 5px solid #2563eb;
+    transition: 0.3s;
+}
+
+.feedback-item:hover {
+    background: #f3f4f6;
+}
+
+.feedback-user {
+    font-weight: 700;
+    color: #1f2937;
+}
+
+.feedback-stars {
+    color: #f59e0b; /* Màu vàng cho sao */
+    margin-left: 10px;
+}
+
+.feedback-content {
+    margin: 10px 0;
+    color: #4b5563;
+    line-height: 1.6;
+}
+
+.feedback-date {
+    font-size: 12px;
+    color: #9ca3af;
+}
+
+/* Form gửi đánh giá bên phải */
+.feedback-form {
+    background: #fff;
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+    border: 1px solid #e5e7eb;
+    height: fit-content;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #374151;
+}
+
+.form-input, .form-select, .form-textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    font-size: 14px;
+    transition: 0.2s;
+}
+
+.form-input:focus, .form-textarea:focus {
+    border-color: #2563eb;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.btn-submit-feedback {
+    width: 100%;
+    padding: 14px;
+    background: #2563eb;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-submit-feedback:hover {
+    background: #1d4ed8;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .feedback-container { grid-template-columns: 1fr; }
+}
