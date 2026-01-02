@@ -64,6 +64,10 @@ $related_books = db_fetch_all($sql_related, [
                 <button class="btn-add-cart" onclick="addToCart('<?= $book['id_sach'] ?>')">
                     <i class="fa-solid fa-cart-plus"></i> Thêm vào giỏ hàng
                 </button>
+                <a href="index.php?page=feedback&id=<?= $book['id_sach'] ?>" class="btn-feedback">
+                     <i class="fa-solid fa-pen-to-square"></i> Viết đánh giá
+                 </a>
+                
             </div>
             
             <div class="pd-policy">
